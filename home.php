@@ -6,6 +6,9 @@
 
     $datasp = mysqli_query($koneksi,"SELECT * FROM sopir");
     $jumlahsp = mysqli_num_rows($datasp);
+
+    $data_cs = mysqli_query($koneksi, "SELECT * FROM customer");
+
 ?>
 
 <!doctype html>
@@ -41,7 +44,7 @@
                 <h5>
                     <i class="far fa-envelope text-light mr-3 mt-2 p-1" data-toggle="tooltip" title="Pesan"></i>
                     <i class="far fa-bell text-light mr-3 p-1" data-toggle="tooltip" title="Notifikasi"></i>
-                    <a href="login.php"><i class="fas fa-sign-out-alt text-light mr-3 p-1" data-toggle="tooltip" title="Sign Out"></i></a>
+                    <a href="admin.php"><i class="fas fa-sign-out-alt text-light mr-3 p-1" data-toggle="tooltip" title="Sign Out"></i></a>
                 </h5>
             </div>
         </div>
@@ -92,6 +95,36 @@
                             <a href="sopir.php" class="btn btn-outline-light"> <i class="fas fa-angle-double-right"></i> Lihat Detail</a>
                         </div>
                     </div>
+                    <div class="col-md-10 p-5">
+                    <h5 class="text-white"> Data Customer Berlangganan</i></h5>
+                        <table class="table table-dark">
+                            <thead>
+                                <tr>
+                                    <th scope="col">No</th>
+                                    <th scope="col">Nama</th>
+                                    <th scope="col">Alamat</th>
+                                    <th scope="col">No HP</th>
+                                    <th scope="col">Aksi</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <?php $i=1; ?>
+                                <?php while ( $row_cs = mysqli_fetch_assoc($data_cs) ) : ?>
+                                <tr>
+                                    <th><?= $i ; ?></th>
+                                    <td><?= $row_cs["nama_cs"]; ?></td>
+                                    <td><?= $row_cs["alamat"]; ?></td>
+                                    <td><?= $row_cs["no_hp"]; ?></td>
+                                    <td>
+                                        <a href="hapuscs.php?id_cs=<?= $row_cs["id_cs"]; ?>" class="btn-outline-light p-2 rounded" onclick=" return confirm('Apakah anda yakin ingin menghapus ?')">
+                                        <i class="far fa-trash-alt" data-toggle="tooltip" title="Hapus"></i>
+                                    </td>
+                                </tr>
+                                <?php $i++ ; ?>
+                                <?php endwhile ; ?>
+                            </tbody>
+                        </table>
+                    </div>
                 </div>
         </div>
       </div>
@@ -101,6 +134,7 @@
     
             <div class="collapse navbar-collapse" id="navbarSupportedContent">
                 <form class="form-inline my-2 my-lg-0 ml-auto">
+                        <a href="utama.php"><i class="fas fa-home text-light mr-3 p-1" data-toggle="tooltip" title="halaman user"></i></a>
                         <a href="#"><i class="fab fa-instagram text-light mr-3 mt-2 p-1"> <br> Follow</i></a>
                         <a href="#"><i class="fab fa-facebook-f text-light mr-3 mt-2 p-1"> <br> Like</i></a>
                 </form>

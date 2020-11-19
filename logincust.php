@@ -5,26 +5,21 @@
     if ( isset($_POST["submit"]) ) {
 
         $nama_cs = $_POST["nama_cs"];
-        $alamat = $_POST["alamat"];
-        $no_hp = $_POST["no_hp"];
 
-        $login = "INSERT INTO customer 
-                    VALUES 
-                    ('', '$nama_cs', '$alamat', '$no_hp')";
-        mysqli_query($koneksi, $login);
+        $login = mysqli_query($koneksi, "SELECT * FROM customer WHERE nama_cs=('$nama_cs' OR 'no_hp') ");
         
         if(mysqli_affected_rows($koneksi) > 0 ) {
             echo "
                 <script>
                     alert('login berhasil');
-                    document.location.href = 'home.php';
+                    document.location.href = 'https://wa.me/qr/AAOH764MYGQEL1';
                 </script>
             ";
         }else {
             echo"
             <script>
                 alert('login gagal');
-                document.location.href = 'home.php';
+                document.location.href = 'logincust.php';
             </script>
             ";
         }
@@ -34,7 +29,7 @@
 
 <!doctype html>
 <html lang="en">
-  <head>
+<head>
     <!-- Required meta tags -->
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
@@ -44,38 +39,26 @@
     <link rel="stylesheet" type="text/css" href="admin.css">
     <link rel="stylesheet" href="fontawesome-free-5.14.0-web/css/all.min.css">
 
-    <title>Login</title>
-    </head>
-    <body>
+    <title>customer</title>
+</head>
+<body>
 
         <div class="container">
+        <h5 class="text-white"> <i class="fas fa-sign-in-alt"></i> Login pelanggan<h5>
+        <p class="text-white"> Jika anda belum berlangganan, anda tidak akan bisa memesan. Silahkan klik tombol dibawah untuk berlangganan </p><br>
+        <a href="customer.php"><button type="submit" name="submit" class="btn btn-dark">Daftar <i class="fas fa-sign-in-alt"></i></button></a><p></p>
             <form action="" method="post">
                 <table class="table table-dark align-content-center" >
                     <thead>
                         <tr>
                             <td for="nama_cs">
                                 <div class="input-group flex-nowrap">
-                                <input type="text" class="form-control" placeholder="Masukkan nama" aria-label="Masukkan nama" aria-describedby="addon-wrapping" name="nama_cs" id="nama_cs">
+                                <input type="text" class="form-control" placeholder="Masukkan nama atau no hp pelanggan" aria-label="Masukkan nama" aria-describedby="addon-wrapping" name="nama_cs" id="nama_cs" required>
                             </div>
                             </td>
-                        </tr>
-                        <tr>
-                            <td for="alamat">
-                                <div class="input-group flex-nowrap">
-                                <input type="text" class="form-control" placeholder="Masukkan alamat" aria-label="Masukkan alamat" aria-describedby="addon-wrapping" name="alamat" id="nama_cs">
-                            </div>
-                            </td>
-                        </tr>
-                        <tr>
-                            <td for="no_hp">
-                                <div class="input-group flex-nowrap">
-                                <input type="text" class="form-control" placeholder="Masukkan nomor HP" aria-label="Masukkan nomor HP" aria-describedby="addon-wrapping" name="no_hp" id="nama_cs">
-                            </div>
-                            </td>
-                        </tr>
                     </thead>
                 </table>               
-                <button type="submit" name="submit" class="btn btn-dark">Masuk <i class="fas fa-sign-in-alt"></i></button>
+                <a href="https://wa.me/qr/AAOH764MYGQEL1"><button type="submit" name="submit" class="btn btn-dark">Pesan <i class="fas fa-sign-in-alt"></i></button></a>
             </form>
         </div>
 
@@ -86,5 +69,5 @@
     <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js" integrity="sha384-B4gt1jrGC7Jh4AgTPSdUtOBvfO8shuf57BaghqFfPlYxofvL8/KUEfYiJOMMV+rV" crossorigin="anonymous"></script>
     <script type="text/javascript" src="admin.js"></script>
     
-  </body>
+</body>
 </html>

@@ -44,7 +44,7 @@
     <link rel="stylesheet" type="text/css" href="admin.css">
     <link rel="stylesheet" href="fontawesome-free-5.14.0-web/css/all.min.css">
 
-    <title>Tambah Mobil</title>
+    <title>Tambah Sopir</title>
     </head>
     <body>
 
@@ -63,7 +63,7 @@
                 <h5>
                     <i class="far fa-envelope text-light mr-3 mt-2 p-1" data-toggle="tooltip" title="Pesan"></i>
                     <i class="far fa-bell text-light mr-3 p-1" data-toggle="tooltip" title="Notifikasi"></i>
-                    <a href="login.php"><i class="fas fa-sign-out-alt text-light mr-3 p-1" data-toggle="tooltip" title="Sign Out"></i></a>
+                    <a href="admin.php"><i class="fas fa-sign-out-alt text-light mr-3 p-1" data-toggle="tooltip" title="Sign Out"></i></a>
                 </h5>
             </div>
         </div>
